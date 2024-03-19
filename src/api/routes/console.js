@@ -11,8 +11,8 @@ const consolesRouter = require('express').Router();
 
 consolesRouter.get('/:id', getConsoleByID);
 consolesRouter.get('/', getConsoles);
-consolesRouter.post('/', postConsole);
-consolesRouter.put('/:id', putConsole);
+consolesRouter.post('/', [isAuth], postConsole);
+consolesRouter.put('/:id', [isAuth], putConsole);
 consolesRouter.delete('/:id', [isAdmin], deleteConsole);
 
 module.exports = consolesRouter;

@@ -15,8 +15,8 @@ const videogamesRouter = require('express').Router();
 videogamesRouter.get('category/:category', getVideogameByCategory);
 videogamesRouter.get('/:id', getVideogameByID);
 videogamesRouter.get('/', getVideogames);
-videogamesRouter.post('/', postVideogame);
-videogamesRouter.put('/:id', putVideogame);
-videogamesRouter.delete('/:id', [isAuth], deleteVideogame);
+videogamesRouter.post('/', [isAuth], postVideogame);
+videogamesRouter.put('/:id', [isAuth], putVideogame);
+videogamesRouter.delete('/:id', [isAdmin], deleteVideogame);
 
 module.exports = videogamesRouter;

@@ -42,12 +42,6 @@ const postVideogame = async (req, res, next) => {
   try {
     const newVideogame = new Videogame(req.body);
 
-    // if (req.user.role === 'admin') {
-    //   newVideogame.verified = true;
-    // } else {
-    //   newVideogame.verified = false;
-    // }
-
     const savedVideogame = await newVideogame.save();
     return res.status(201).json(savedVideogame);
   } catch (error) {
