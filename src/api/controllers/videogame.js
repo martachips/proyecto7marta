@@ -19,21 +19,13 @@ const getVideogameByID = async (req, res, next) => {
   }
 };
 
-const getVideogameAdmin = async (req, res, next) => {
-  try {
-    const videogame = await Videogame.find({ verified: false });
-    return res.status(200).json(videogame);
-  } catch (error) {
-    return res.status(400).json('Request error');
-  }
-};
-
 const getVideogameByCategory = async (req, res, next) => {
   try {
     const { category } = req.params;
-    const videogame = await Videogame.find({ category });
+    const videogame = await Videogame.find({ category: category });
     return res.status(200).json(videogame);
   } catch (error) {
+    console.log(error);
     return res.status(400).json('Request error');
   }
 };
@@ -79,7 +71,6 @@ const deleteVideogame = async (req, res, next) => {
 module.exports = {
   getVideogames,
   getVideogameByID,
-  getVideogameAdmin,
   getVideogameByCategory,
   postVideogame,
   putVideogame,

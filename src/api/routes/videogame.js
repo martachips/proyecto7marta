@@ -2,7 +2,6 @@ const { isAdmin, isAuth } = require('../../../middlewares/auth');
 const {
   getVideogames,
   getVideogameByID,
-  getVideogameAdmin,
   getVideogameByCategory,
   postVideogame,
   putVideogame,
@@ -11,9 +10,8 @@ const {
 
 const videogamesRouter = require('express').Router();
 
-//videogamesRouter.get("/not-verified", [isAdmin], getVideogameAdmin);
-videogamesRouter.get('category/:category', getVideogameByCategory);
 videogamesRouter.get('/:id', getVideogameByID);
+videogamesRouter.get('/category/:category', getVideogameByCategory);
 videogamesRouter.get('/', getVideogames);
 videogamesRouter.post('/', [isAuth], postVideogame);
 videogamesRouter.put('/:id', [isAuth], putVideogame);
